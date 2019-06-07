@@ -78,7 +78,7 @@ export default class WeatherDetailScreen extends React.Component {
             summary = <ScrollView
                 style={{flex:0.2}}>
                 <Text
-                    style={{textAlign:"center",color:'#fafafa'}}>{this.state.query.pages[hello].extract}</Text>
+                    style={{textAlign:"center",color:'rgba(0,0,0,0.98)'}}>{this.state.query.pages[hello].extract}</Text>
             </ScrollView>;
         } else {
             summary = <ScrollView
