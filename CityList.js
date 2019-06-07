@@ -58,7 +58,7 @@ export default class CityList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(236, 240, 241, 1)',
+    backgroundColor: 'rgb(2,7,21)',
     // marginTop: Constants.statusBarHeight,
   },
 
@@ -68,14 +68,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
 
     borderWidth: 1,
-    borderColor: 'rgba(232, 236, 241, 1)',
+    borderColor: 'rgb(2,7,21)',
   },
   text: {
+      backgroundColor: 'rgb(2,7,21)',
       color: 'white',
-    fontSize: 20,
+    fontSize: 19,
     textAlign: 'center',
-      textShadowColor: 'black',
-      textShadowOffset: { width: 1, height: 1 },
-      textShadowRadius: 1,
   }
 });
