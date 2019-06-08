@@ -1,16 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View, ART, FlatList, TouchableOpacity, ScrollView } from 'react-native';
-import { Constants, MapView } from 'expo';
+import { StyleSheet, Text, View,  ScrollView } from 'react-native';
+import { MapView } from 'expo';
 import Slider from "react-native-slider";
-import { AreaChart, Grid } from 'react-native-svg-charts'
+import { AreaChart } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 
 export default class WeatherDetailScreen extends React.Component {
-    static navigationOptions = ({ navigation }) => {
-        return {
-            title: `Weather Info: ${navigation.getParam('city', 'Unknown')}`,
-        };
-    };
+    // static navigationOptions = ({ navigation }) => {
+    //     return {
+    //         title: `Weather Info: ${navigation.getParam('city', 'Unknown')}`,
+    //     };
+    // };
 
     constructor(props) {
         super(props);
@@ -42,7 +42,6 @@ export default class WeatherDetailScreen extends React.Component {
             .then(info => {
                 this.setState( {
                     ...info,
-
                 });
             });
     }
@@ -71,9 +70,6 @@ export default class WeatherDetailScreen extends React.Component {
         const desc = Object.keys(this.state.query.pages);
         const hello = desc[0];
 
-        // const hello = Object.keys(desc.desc[0]);
-
-        // console.log(this.state.query.pages["284812"].extract);
         if(this.state.trigger === true) {
             summary = <ScrollView
                 style={{flex:0.2}}>
@@ -88,13 +84,10 @@ export default class WeatherDetailScreen extends React.Component {
         }
 
         return (
-
             <View style={styles.container}>
-
                 <AreaChart
                     style={{flex:0.4,marginTop:"5%"}}
                     data={ new_data }
-                    // contentInset={{ top: 30, bottom: 30 }}
                     curve={ shape.curveBasis}
                     svg={{ fill: 'rgba(0, 0, 0, 0.2)'}}
                 >
@@ -110,7 +103,6 @@ export default class WeatherDetailScreen extends React.Component {
                     <Text style={{
                         color:'rgb(2,7,21)',
                         fontSize:19,
-
                     }}>{get_temp.list[parseInt(this.state.value * 35)]["dt_txt"]}</Text>
                     <Text/>
                     <Text style={{
@@ -120,35 +112,12 @@ export default class WeatherDetailScreen extends React.Component {
                     <Text style={{
                         color:'rgb(2,7,21)',
                         fontSize:17,
-
                     }}>습도 {get_temp.list[parseInt(this.state.value * 35)]["main"]["humidity"]}</Text>
                     <Text style={{
                         color:'rgb(2,7,21)',
                         fontSize:17,
-
-
                     }}>현재 날씨 {get_temp.list[parseInt(this.state.value * 35)].weather[0]["main"]}</Text>
                 </View>
-                {/*<Text*/}
-                {/*style={{backgroundColor: "gray"}}>{celsius}</Text>*/}
-
-                {/*<FlatList*/}
-                {/*    style={{height: 300, backgroundColor:"gray"}}*/}
-                {/*    data={this.state.info}*/}
-                {/*    renderItem={({info}) => {*/}
-                {/*        return (*/}
-                {/*            <Text>{{info}}</Text>*/}
-                {/*        )*/}
-                {/*    }}*/}
-                {/*    keyExtractor={(item, index) => index}*/}
-                {/*/>*/}
-                {/*<View style={{height:"30%"}}>*/}
-                {/*    {this.state.info.main.map((temp) => {*/}
-                {/*        return (<Text>{temp}</Text>);*/}
-                {/*    })}*/}
-                {/*    /!*<Text>{Date(this.state.dt).toString()}</Text>*!/*/}
-                {/*</View>*/}
-
                 <MapView
                     style={{flex:1}}
                     initialRegion={{
@@ -161,14 +130,12 @@ export default class WeatherDetailScreen extends React.Component {
                     <MapView.Marker
                         style={{height:50}}
                         key={get_temp.list[35]["cnt"]} coordinate={{latitude:get_temp.city.coord.lat, longitude:get_temp.city.coord.lon}}
-                                    description={this.state.query.pages[hello].extract}
-                                    title={get_temp.city.name}
-                                    onPress={this.trigger_it}
+                        description={this.state.query.pages[hello].extract}
+                        title={get_temp.city.name}
+                        onPress={this.trigger_it}
                     />
-
                 </MapView>
                 {summary}
-
             </View>
         );
     }
@@ -179,8 +146,5 @@ const styles = StyleSheet.create({
         backgroundColor:'#fafafa',
         flex: 1,
         // marginTop: Constants.statusBarHeight,
-    }, hello : {
-        height:"50%"
-
-    }
+    },
 });
